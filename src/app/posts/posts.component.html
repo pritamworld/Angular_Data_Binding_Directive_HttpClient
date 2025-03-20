@@ -1,0 +1,5 @@
+@for (post of posts; track $index) {
+  <app-postdetails [userPost]="post"></app-postdetails>
+}@empty {
+  <h2>No Posts found...</h2>
+}
