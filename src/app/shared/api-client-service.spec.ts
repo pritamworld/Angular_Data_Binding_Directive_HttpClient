@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MyhttpclientService } from './myhttpclient.service';
+import { ApiClientService } from './api-client-service';
 
-describe('MyhttpclientService', () => {
-  let service: MyhttpclientService;
+describe('ApiClientService', () => {
+  let service: ApiClientService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MyhttpclientService);
+    service = TestBed.inject(ApiClientService);
   });
 
   it('should be created', () => {

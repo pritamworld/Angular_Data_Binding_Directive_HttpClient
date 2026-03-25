@@ -1,0 +1,5 @@
+<h1>Post List</h1>
+@for (p of postList; track p.id) {
+  <app-postdetails [post]="p" />
+}
+
