@@ -5,10 +5,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ApiClientService } from '../shared/api-client-service';
 import { Postdetails } from '../postdetails/postdetails';
 import { Post } from '../models/post.model';
-
+import { Postform } from '../postform/postform';
 @Component({
   selector: 'app-postlist',
-  imports: [Postdetails, ScrollingModule],
+  imports: [Postdetails, ScrollingModule, Postform],
   templateUrl: './postlist.html',
   styleUrl: './postlist.css',
 })
@@ -20,6 +20,10 @@ export class Postlist {
     added: [],
     deletedIds: new Set()
   });
+
+  refreshPosts(): void {
+    this.postsResource.reload();
+  }
 
   // 🔹 Use 'stream' instead of 'loader' for Angular 20+ rxResource
   // Explicitly pass <Post[]> to strongly type the resource values

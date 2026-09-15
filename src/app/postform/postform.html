@@ -1,0 +1,35 @@
+<h1>Add New Post</h1>
+<form (ngSubmit)="submitPost()" #postForm="ngForm">
+  <footer>
+    <div class="form-group">
+      <label for="userId">User ID:</label>
+      <input
+        type="number"
+        id="userId"
+        name="userId"
+        [(ngModel)]="newPost.userId"
+        required
+      />
+    </div>
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      [(ngModel)]="newPost.title"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="content">Body:</label>
+    <textarea
+      id="content"
+      name="content"
+      [(ngModel)]="newPost.body"
+      required
+    ></textarea>
+  </div>
+
+  <button type="submit" [disabled]="!postForm.form.valid">Add Post</button>

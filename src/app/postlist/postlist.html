@@ -1,5 +1,5 @@
 <h1>Post List</h1>
-
+<app-postform (onPostAdded)="refreshPosts()"></app-postform>
 @if (isLoading()) {
   <div class="loading-spinner">Loading posts...</div>
 }
