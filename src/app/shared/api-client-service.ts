@@ -2,8 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
-import { Post } from '../models/post.model'; // adjust path
-
+import { Post, CreatePostPayload, UpdatePostPayload } from '../models/post.model'; // adjust path
 @Injectable({
   providedIn: 'root',
 })
@@ -27,14 +26,14 @@ export class ApiClientService {
   }
 
   // CREATE post (Omit 'id' from input if backend generates it)
-  public createPost(post: Omit<Post, 'id'>): Observable<Post> {
+  public createPost(post: CreatePostPayload): Observable<Post> {
     return this.http.post<Post>(this.baseUrl, post).pipe(
       catchError(this.handleError)
     );
   }
 
   // UPDATE post
-  public updatePost(id: number, post: Partial<Post>): Observable<Post> {
+  public updatePost(id: number, post: UpdatePostPayload): Observable<Post> {
     return this.http.put<Post>(`${this.baseUrl}/${id}`, post).pipe(
       catchError(this.handleError)
     );
@@ -42,7 +41,7 @@ export class ApiClientService {
 
   // DELETE post
   public deletePost(id: number): Observable<unknown> {
-    return this.http.delete<unknown>(`${`${this.baseUrl}/${id}`}`).pipe(
+    return this.http.delete<unknown>(`${this.baseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
