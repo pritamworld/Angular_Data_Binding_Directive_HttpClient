@@ -1,10 +1,21 @@
 <h1>Post List</h1>
-<!-- @for (p of postList; track p.id) {
-  <app-postdetails [post]="p" />
-} -->
 
-<cdk-virtual-scroll-viewport itemSize="10" class="viewport-container">
-  <div *cdkVirtualFor="let post of postList" class="item">
-    <app-postdetails [post]="post" />
-  </div>
+@if (isLoading()) {
+  <div class="loading-spinner">Loading posts...</div>
+}
+
+@if (errorMsg()) {
+  <div class="error-banner">{{ errorMsg() }}</div>
+}
+
+<cdk-virtual-scroll-viewport itemSize="60" class="viewport-container">
+  @for (post of postList(); track post.id) {
+    <div class="item">
+      <app-postdetails [post]="post" />
+    </div>
+  } @empty {
+    @if (!isLoading() && !errorMsg()) {
+      <div class="empty-state">No posts available.</div>
+    }
+  }
 </cdk-virtual-scroll-viewport>
