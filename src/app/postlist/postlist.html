@@ -1,5 +1,10 @@
 <h1>Post List</h1>
-@for (p of postList; track p.id) {
+<!-- @for (p of postList; track p.id) {
   <app-postdetails [post]="p" />
-}
+} -->
 
+<cdk-virtual-scroll-viewport itemSize="10" class="viewport-container">
+  <div *cdkVirtualFor="let post of postList" class="item">
+    <app-postdetails [post]="post" />
+  </div>
+</cdk-virtual-scroll-viewport>

@@ -3,10 +3,10 @@ import { ApiClientService } from '../shared/api-client-service';
 import { Postdetails } from '../postdetails/postdetails';
 import { Post } from '../models/post.model';
 import { catchError, finalize, of } from 'rxjs';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
 @Component({
   selector: 'app-postlist',
-  imports: [Postdetails],
+  imports: [Postdetails, ScrollingModule],
   templateUrl: './postlist.html',
   styleUrl: './postlist.css',
 })
